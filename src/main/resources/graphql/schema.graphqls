@@ -1,0 +1,26 @@
+type Singer {
+    id: ID
+    name: String
+    age: Int
+    gender: String
+    thumbnail: String
+    musics: [Music]
+}
+
+type Music {
+    id: ID
+    genre: String
+    chord: String
+    instrument: String
+}
+
+type Query {
+    singers: [Singer]
+    getSingers(singerId: ID!): Singer
+    getSingerMusics(singerId: ID!): [Music]
+}
+
+type Mutation {
+    singerPersistence(name: String!, age: Int!, gender: String!): Singer
+    appendMusic(singerId: ID,genre: String!,chord: String!,instrument: String!) : Singer
+}
